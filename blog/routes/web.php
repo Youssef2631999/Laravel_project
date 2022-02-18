@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,62 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/posts', function () {
-    $posts=[
-    [    "id"=> 1,
-        "name"=> "Youssef",
-        "body"=> "hi youssef",
-        "title"=> "title youssef"
-    ],
-    [
-        "id"=> 2,
-        "name"=> "Lina",
-        "body"=> "hi lina",
-        "title"=> "title lina"
-    ],
-    [
-        "id"=> 3,
-        "name"=> "Ali",
-        "body"=> "hi ali",
-        "title"=> "title ali"
-    ],
-    [
-        "id"=> 4,
-        "name"=> "Mahmoud",
-        "body"=> "hi mahmoud",
-        "title"=> "title mahmoud"
-    ],
-    ];
-    
-    return view ('posts.index',['posts'=>$posts]);
-});
+/*Route::get('/posts', [PostController::class,"index"]);
 
-Route::get('/show/{id}',function($id){
-   $post = ["id"=> $id,
-    "name"=> "Mahmoud",
-    "body"=> "hi mahmoud",
-    "title"=> "title mahmoud"
-];
-    return view('posts.show',$post);
-})->where('id','[0-9]+');
+Route::get('/posts/{id}',[PostController::class,"show"]);
 
-Route::get('/edit/{id}',function($id){
-    $post = ["id"=> $id,
-    "name"=> "Mahmoud",
-    "body"=> "hi mahmoud",
-    "title"=> "title mahmoud"
-];
-return view('posts.edit',$post);
-})->where('id','[0-9]+');
+Route::get('/posts/{id}/edit',[PostController::class,"edit"]);
 
-Route::post('update',function(){
-    return "Update";
-});
+Route::post('/posts/{id}',[PostController::class,"update"]);
 
-Route::get('/create',function(){
-    return view('posts.create');
-});
+Route::get('/posts/create',[PostController::class,"create"]);
 
-Route::post('/store',function(){
-    return "Store";
-});
+Route::post('/posts/{id}',[PostController::class,"destroy"]);
+
+Route::post('/posts',[PostController::class,"store"]);*/
+
+
+Route::resource('posts',PostController::class);

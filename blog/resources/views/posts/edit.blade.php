@@ -1,23 +1,42 @@
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
 
 </head>
 
 <body> 
+<!-- update page -->
 
-<form action="/update" method="post">
+
+<form action="/posts/{{$id}}" method="post">
     @csrf
-    <input type="text" value={{$id}} name="id"><br>
-    <input type="text" value={{$name}} name="name"><br>
-    <input type="text" value={{$body}} name="body"><br>
-    <input type="text" value={{$title}} name="title"><br>
-
-    <button type="submit">Submit</button>
-
-
+    @method('PATCH')
+  <div class="mb-3">
+    <label  class="form-label">ID</label>
+    <input type="text" class="form-control" value="{{$id}}" name="id">
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">TITLE</label>
+    <input type="text" class="form-control" value="{{ $title }}" name="title">
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">DESCRIPTION</label>
+    <input type="text" class="form-control" value="{{$description}}" name="description">
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+
+
+
+
+
 
 
 
